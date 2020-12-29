@@ -37,7 +37,7 @@ Citizen.CreateThread(function ()
     local ped = PlayerPedId()
         Citizen.Wait(1)
         if Event1 == false then
-            Citizen.Wait(500000)
+            Citizen.Wait(300000)
             Event1 = true
         end
     end
