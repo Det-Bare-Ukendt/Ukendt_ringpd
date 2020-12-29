@@ -17,16 +17,19 @@ local Event1 = true
 
 Citizen.CreateThread(function()
     while true do
-      Citizen.Wait(1)
-      local player = GetPlayerPed(-1)
-        if Event1 == false then 
-            DrawText3Ds(441.25640869141,-981.06518554688,30.689584732056+0.5, "~r~ Cooldown", 3.5, 7)
-                elseif Event1 == true then 
-                DrawText3Ds(441.25640869141,-981.06518554688,30.689584732056+0.5, "~w~[~r~E~w~] | Ring på klokken", 3.0, 7)
-                if IsControlJustPressed(1, 38) then
-                exports['mythic_notify']:DoHudText('inform', 'Du har ringet på klokken, der ville snart komme en betjent') 
-                TriggerServerEvent('Ukendt:getinfo')
-                Event1 = false
+        Citizen.Wait(1)
+        local player = GetPlayerPed(-1)
+        local UKENDTERSEJ = Vdist(441.25640869141,-981.06518554688,30.689584732056, GetEntityCoords(player))
+        if UKENDTERSEJ <3 then
+            if Event1 == false then 
+                DrawText3Ds(441.25640869141,-981.06518554688,30.689584732056+0.5, "~r~ Cooldown", 3.5, 7)
+                    elseif Event1 == true then 
+                    DrawText3Ds(441.25640869141,-981.06518554688,30.689584732056+0.5, "~w~[~r~E~w~] | Ring på klokken", 3.0, 7)
+                    if IsControlJustPressed(1, 38) then
+                    exports['mythic_notify']:DoHudText('inform', 'Du har ringet på klokken, der ville snart komme en betjent') 
+                    TriggerServerEvent('Ukendt:getinfo')
+                    Event1 = false
+                end
             end
         end
     end
